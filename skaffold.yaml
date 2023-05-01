@@ -1,0 +1,28 @@
+apiVersion: skaffold/v3
+kind: Config 
+
+deploy:
+  kubeContext: minikube
+  kubectl: {}
+    
+
+build: 
+  local:
+    push: false
+  artifacts:
+    - image: nikolinmajmari/ticketing-auth
+      context: auth 
+      docker: 
+        dockerfile: Dockerfile
+      sync: 
+        manual:
+          - dest: .
+            src: 'src/***/*.ts'
+    - image: nikolinmajmari/ticketing-client
+      context: client 
+      docker: 
+        dockerfile: Dockerfile
+      sync: 
+        manual:
+          - dest: .
+            src: '**/*.ts'
