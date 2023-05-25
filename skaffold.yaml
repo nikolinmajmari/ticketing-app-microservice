@@ -1,10 +1,10 @@
-apiVersion: skaffold/v3
+apiVersion: skaffold/v2alpha3
 kind: Config 
-
 deploy:
   kubeContext: minikube
-  kubectl: {}
-    
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
 
 build: 
   local:
@@ -25,4 +25,4 @@ build:
       sync: 
         manual:
           - dest: .
-            src: '**/*.ts'
+            src: '**/*.js'

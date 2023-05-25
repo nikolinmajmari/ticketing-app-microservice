@@ -7,8 +7,6 @@ router.get(
     "/api/users/currentuser",
     requireAuth
     ,(req,res,next)=>{
-
-        console.log("heu");
         return res.send({currentUser:req.currentUser||null});
     });
 export {router as currentUserRouter};

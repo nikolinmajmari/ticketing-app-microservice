@@ -1,28 +1,19 @@
-import axios from "axios";
+import clientBuilder from "../api/client.builder";
 
-const LandingPage = ({data})=>{
-    console.log("I am axios in component");
-    return <h1>Index page with {JSON.stringify(data)}</h1>
+const LandingPage = ({currentUser})=>{
+    console.log('syncyng')
+    return currentUser ? 
+    <h1>You are signed in {currentUser.name} </h1>
+    :
+    <h1>You are not signed in </h1>;
 }
 
 
-LandingPage.getInitialProps = async ()=>{
+LandingPage.getInitialProps = async ({req})=>{
+    const client =  clientBuilder({req});
     try  {
-        if(typeof window ==="undefined"){
-            const {data} = await axios.get(
-                "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser",
-                {
-                    headers:{
-                        Host: "ticketing.dev",
-                    }
-                }
-            );
-        }else{
-            const {data} = await axios.get(
-                "/api/users/currentuser",
-            );
-        }
-    return {data};
+        const {data} = await client.get('/api/users/currentuser');
+        return data;
     }catch(e){
         console.log(e.message);
         return {data:e.message};
