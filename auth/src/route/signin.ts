@@ -2,9 +2,9 @@ import express,{NextFunction, Request,Response} from "express";
 import {body} from "express-validator";
 import PasswordHasher from "../services/password_hasher";
 import { User } from "../models/user";
-import { validateRequest } from "../middlewares/validate-request";
+import { validateRequest } from "@microservices-tutorials/common";
 import { currentUserRouter } from "./current_user";
-import BadRequestError from "../errors/bad_request_error";
+import {BadRequestError} from "@microservices-tutorials/common";
 import jwt from "jsonwebtoken";
 
 const router = express.Router();

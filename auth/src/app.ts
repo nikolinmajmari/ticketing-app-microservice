@@ -5,9 +5,9 @@ import { currentUserRouter } from "./route/current_user";
 import { signInRouter } from "./route/signin";
 import { signOutRouter } from "./route/signout";
 import { signUpRouter } from "./route/signup";
-import { errorHandler } from "./middlewares/error_handler";
-import { NotFoundError } from "./errors/not_found_error";
-import { currentUserHandler } from "./middlewares/current_user_handler";
+import { errorHandler } from "@microservices-tutorials/common"
+import { NotFoundError } from "@microservices-tutorials/common";
+import { currentUserHandler } from "@microservices-tutorials/common";
 
 const app = express();
 app.set("trust proxy",true)

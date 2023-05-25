@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 import mongoose,{ connectToMongose } from "./config/db";
 
 import {app} from "./app";

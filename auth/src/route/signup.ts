@@ -1,9 +1,9 @@
 import express, { NextFunction } from "express";
 import { body } from "express-validator";
 import { User } from "../models/user";
-import ConflictError from "../errors/conflict_error";
+import {ConflictError} from "@microservices-tutorials/common";
 import jwt from "jsonwebtoken";
-import { validateRequest } from "../middlewares/validate-request";
+import { validateRequest } from "@microservices-tutorials/common";
 
 const router = express.Router();
 
